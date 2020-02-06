@@ -4,6 +4,7 @@ public class registrar {
 	private String course;
 	private String credits;
 	private String grade;
+	private int count;
 
 	
 	public registrar(String course, String credits, String grade) {

@@ -1,5 +1,4 @@
-
-package assn;
+package assn.drn;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,19 +35,35 @@ public class StringSorter {
 				int j = lines.size()-1;
 				while (j>0){
 					List <String> sublist = lines.subList(0,j+1);
-					int index = 0;
-					String str = sublist.get(index);
-					for (int i=0; i<sublist.size(); i++){
-						if (str.compareTo(sublist.get(i))<=0){
-							index = i;
-							str = sublist.get(index);
-						}
-					}
-					lines.set(index, lines.get(j));
-					lines.set(j, str);
+
+					int index=findLastLine(sublist);
+					
+					
+					swap(index, j, sublist);
 					j = j-1;
+
 				}
 				System.out.println("Sort Complete");
 		}
+
+	private int findLastLine(List<String> sublist){
+		int index=0;
+		String str=sublist.get(index);
+		for(int i=0;i<sublist.size();i++){
+			if(str.compareTo(sublist.get(i))<=0){
+				index=i;
+				str=sublist.get(index);
+			}
+		}
+		return index;
+	}
+		
+
+	
+	private void swap(int indexOne, int indexTwo, List<String> sublist) {
+		String str= sublist.get(indexOne);
+		lines.set(indexOne, lines.get(indexTwo));
+		lines.set(indexTwo, str);
+	}
 		
 }
